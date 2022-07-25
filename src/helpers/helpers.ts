@@ -1,6 +1,7 @@
 import { formattedCurrentWeather } from "../types/formattedCurrentWeather";
+import { formattedForecastData } from "../types/formattedForecastData";
 
-export function formatResponseData(
+export function formatLocationWeather(
   responseData: any,
   isCelsius: boolean = true,
   isMetric: boolean = true
@@ -20,4 +21,18 @@ export function formatResponseData(
     time: new Date(location.localtime),
     resultsDate: new Date().getTime(),
   };
+}
+
+export function formatForecastData(forecastData: any, isCelsius: boolean): [formattedForecastData] {
+  return forecastData.map((forecastDay: any) => {
+    const { day } = forecastDay;
+    return {
+      temperatureAvg: isCelsius ? day.avgtemp_c : day.avgtemp_f,
+      temperatureMax: isCelsius ? day.maxtemp_c : day.maxtemp_f,
+      temperatureMin: isCelsius ? day.mintemp_c : day.mintemp_f,
+      changeOfRain: day.daily_chance_of_rain,
+      conditionText: day.condition.text,
+      conditionPicture: day.condition.icon,
+    };
+  });
 }

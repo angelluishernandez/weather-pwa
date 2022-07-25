@@ -9,6 +9,8 @@ type Props = {
 export const RoundedButton = styled.button`
   padding: 5px 10px;
   border-radius: 5px;
+  width: 75px;
+  height: 40px;
   background: ${({ bgColor }: Props) => bgColor};
   color: ${({ color }: Props) => color};
   border: none;

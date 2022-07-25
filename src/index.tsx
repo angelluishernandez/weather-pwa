@@ -5,17 +5,15 @@ import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import GeolocationProvider from "./context/geolocationContext";
+import WeatherProvider from "./context/weatherContext";
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <GeolocationProvider>
+      <WeatherProvider>
         <App />
-      </GeolocationProvider>
+      </WeatherProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
